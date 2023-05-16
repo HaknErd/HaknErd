@@ -1,3 +1,3 @@
 ### Hi there 👋
 
-Pages
+Go [Here](https://haknerd.github.io/HaknErd/)
