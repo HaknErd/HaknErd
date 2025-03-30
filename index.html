@@ -179,6 +179,7 @@
       // Redirect if valid
       if (mailto && isValidEmail(mailto)) {
         window.location.href = "mailto:" + mailto;
+        window.close(); // Close the page after redirecting
       } else if (mailto) {
         console.error(
           "Invalid email address provided in the mailto parameter."
