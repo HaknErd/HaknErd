@@ -113,7 +113,7 @@ function submitForm(recaptchaToken) {
   const urlEncodedData = new URLSearchParams(formData).toString();
 
   const url =
-    "https://script.google.com/macros/s/AKfycbyFaZ9BZhezM-TXQIzpKvhgX6PwgOUSn8MJqQ7g6pzYJlF0pdUhcJRqyfxras4yMvc/exec";
+    "https://script.google.com/macros/s/AKfycbz_-Pjh0yQIzyCHgKzpowhPCL-rSi42vpRetigmjES48oaB6omq1WlYgDRLexzHRK7R/exec";
 
   // Show loading indicator
   const submitBtn = form.querySelector('button[type="submit"]');
