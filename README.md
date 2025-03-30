@@ -1,3 +1,4 @@
 # HaknErd
 
-Oficially known As Hakan Erdogan
+Frontend code my personal website
+[hakn.me](https://hakn.me)
