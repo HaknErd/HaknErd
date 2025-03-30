@@ -165,5 +165,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/contact.js"></script>
     <!-- added to fix form handling using contact.js -->
+    <script>
+      // Validate email format
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Get the mailto parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const mailto = urlParams.get("mailto");
+
+      // Redirect if valid
+      if (mailto && isValidEmail(mailto)) {
+        window.location.href = "mailto:" + mailto;
+      } else if (mailto) {
+        console.error(
+          "Invalid email address provided in the mailto parameter."
+        );
+      }
+    </script>
   </body>
 </html>
