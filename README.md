@@ -2,6 +2,8 @@
 
 Humble hobby developer.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F41CS1CN)
+
 ## Socials
 
 - <a href="https://www.linkedin.com/in/hakan-erdogan-152169349/" style="display: inline-flex; align-items: center; text-decoration: none;">
