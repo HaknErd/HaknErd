@@ -145,7 +145,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10rem;
+  height: calc(fit-content - 2rem);
   background: var(--hero-background);
   text-align: center;
   padding: 2rem;
@@ -234,6 +234,7 @@ a {
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .custom-checkbox input[type="checkbox"]:checked {
