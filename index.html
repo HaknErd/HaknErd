@@ -7,6 +7,7 @@
 
     <!-- Styles and Icons -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/kofi.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -170,6 +171,20 @@
       </div>
     </template>
     <!-- Scripts -->
+    <!-- kofi -->
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script>
+      kofiWidgetOverlay.draw("haknerd", {
+        type: "floating-chat",
+        "floating-chat.donateButton.text": "Support me",
+        "floating-chat.donateButton.background-color": "#794bc4",
+        "floating-chat.donateButton.text-color": "#fff",
+        "floating-chat.donateButton.border-radius": "5px",
+        "floating-chat.donateButton.padding": "10px 20px",
+        "floating-chat.donateButton.font-size": "16px",
+      });
+    </script>
+    <!-- everything else for the non donating -->
     <script src="scripts/contact.js"></script>
     <script src="scripts/app.js"></script>
   </body>
