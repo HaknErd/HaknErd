@@ -1,23 +1,17 @@
 function NotifyToast(msg, type = "success") {
-  // Create toast container if it doesn't exist
-  let toastContainer = document.querySelector(".toast-container");
-  if (!toastContainer) {
-    toastContainer = document.createElement("div");
-    toastContainer.className =
-      "toast-container position-fixed bottom-0 end-0 p-3";
-    document.body.appendChild(toastContainer);
-  }
+  // Use existing toast container and template from HTML
+  const toastContainer = document.querySelector(".toast-container");
+  const template = document.getElementById("toast-template");
+  if (!template || !toastContainer) return;
 
-  // Create the toast element with Bootstrap 5 structure
-  const toastId = "toast-" + Date.now();
-  const toastEl = document.createElement("div");
-  toastEl.className = `toast align-items-center border-0`;
-  toastEl.id = toastId;
-  toastEl.setAttribute("role", "alert");
-  toastEl.setAttribute("aria-live", "assertive");
-  toastEl.setAttribute("aria-atomic", "true");
+  // Clear previous toasts to avoid duplicate messages
+  toastContainer.innerHTML = "";
 
-  // Set the background color based on type
+  // Clone the template content
+  const toastFragment = template.content.cloneNode(true);
+  const toastEl = toastFragment.querySelector(".toast");
+
+  // Set background class based on type
   let bgClass = "bg-success";
   if (type === "error") {
     bgClass = "bg-danger";
@@ -28,40 +22,29 @@ function NotifyToast(msg, type = "success") {
   }
   toastEl.classList.add("text-white", bgClass);
 
-  // Create the toast content
-  toastEl.innerHTML = `
-    <div class="d-flex">
-      <div class="toast-body">
-        ${msg}
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-  `;
+  // Set the message for the toast
+  toastEl.querySelector(".toast-body").textContent = msg;
 
-  // Add the toast to the container
+  // Append to the container
   toastContainer.appendChild(toastEl);
 
-  // Initialize and show the toast using Bootstrap 5
-  const toast = new bootstrap.Toast(toastEl, {
-    animation: true,
-    autohide: true,
-    delay: 3000,
-  });
-  toast.show();
-
-  // Remove the toast element after it's hidden
-  toastEl.addEventListener("hidden.bs.toast", function () {
-    toastEl.remove();
-  });
+  // After 3 seconds, fade out and remove the toast
+  setTimeout(() => {
+    toastEl.classList.add("hide");
+    setTimeout(() => {
+      toastEl.remove();
+    }, 500); // allow fade transition to complete
+  }, 3000);
 }
 
 function validateAllFields() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
+  const subject = document.getElementById("subject").value;
   const message = document.getElementById("message").value;
 
   // Check if any field is empty
-  if (!name || !email || !message) {
+  if (!name || !email || !message || !subject) {
     NotifyToast("Please fill out all fields.", "error");
     return false;
   }
@@ -116,7 +99,7 @@ function submitForm(recaptchaToken) {
     "https://script.google.com/macros/s/AKfycbz_-Pjh0yQIzyCHgKzpowhPCL-rSi42vpRetigmjES48oaB6omq1WlYgDRLexzHRK7R/exec";
 
   // Show loading indicator
-  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtn = form.querySelector('input[type="submit"]');
   const originalBtnText = submitBtn.innerHTML;
   submitBtn.disabled = true;
   submitBtn.innerHTML =
@@ -133,7 +116,10 @@ function submitForm(recaptchaToken) {
     .then((response) => {
       console.log("Form submitted");
       NotifyToast("Message sent successfully!", "success");
-      form.reset();
+      // Clear the form after a short delay so the toast is visible
+      setTimeout(() => {
+        form.reset();
+      }, 500);
     })
     .catch((error) => {
       console.error("Error:", error);

@@ -4,125 +4,101 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakan Erdogan</title>
-    <!-- Bootstrap 5 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- New unified CSS -->
+
+    <!-- Styles and Icons -->
     <link rel="stylesheet" href="css/style.css" />
-    <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lf2fAQrAAAAABoo2ger8xKy1_nlI3QOpCxoFQnG"></script>
-    <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+
+    <!-- reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf2fAQrAAAAABoo2ger8xKy1_nlI3QOpCxoFQnG"></script>
   </head>
-  <body class="bg-light">
-    <header>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col text-center">
-            <h1>Hakan Erdogan</h1>
-            <p class="lead">Hobby Developer & Technology Enthusiast</p>
-          </div>
+  <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <a href="/index.html" title="Home" class="navbar-brand-name"
+            >Hakan Erdogan</a
+          >
+        </div>
+        <button
+          id="theme-toggle-btn"
+          onclick="toggleTheme()"
+          title="Toggle Theme"
+        >
+          <i class="fas fa-adjust"></i>
+        </button>
+      </nav>
+      <div class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Hakan Erdogan</h1>
+          <p class="hero-subtitle">Hobby Developer & Technology Enthusiast</p>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- Contact Form Start -->
-      <div class="container my-5">
-        <div class="form-container bg-white p-4 rounded shadow-sm">
-          <!-- anchor  -->
-          <a id="contact"></a>
-          <div class="header-section text-center mb-4">
-            <h2 class="mb-2">Contact Me</h2>
-            <p class="text-muted">
-              Fill out the form below to get in touch. I will get back to you as
-              soon as possible. Please allow sometime for a response.
-            </p>
+      <section id="contact-section" class="contact container">
+        <form id="contact-form" autocomplete="on">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name.."
+            required
+            autocomplete="name"
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email address.."
+            required
+            autocomplete="email"
+          />
+
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Subject of your message.."
+            required
+            autocomplete="subject"
+          />
+
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here.."
+            required
+            autocomplete="message"
+          ></textarea>
+          <div class="custom-checkbox">
+            <input
+              type="checkbox"
+              id="privacy-policy"
+              name="privacy-policy"
+              required
+            />
+            <i class="fas fa-box-arrow-up-right"></i>
+            <label for="privacy-policy">
+              By submitting this form, you agree to my
+              <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>.
+            </label>
           </div>
-          <form
-            id="contact-form"
-            class="needs-validation"
-            novalidate
-            autocomplete="on"
-          >
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                required
-                placeholder="Your name"
-                autocomplete="name"
-              />
-              <div class="invalid-feedback">Please enter your name.</div>
-            </div>
-
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                autocomplete="email"
-              />
-              <div class="invalid-feedback">
-                Please provide a valid email address.
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <label for="message" class="form-label">Message</label>
-              <textarea
-                class="form-control"
-                id="message"
-                name="message"
-                rows="5"
-                required
-                placeholder="Your message"
-                autocomplete="on"
-              ></textarea>
-              <div class="invalid-feedback">
-                Please enter your message (at least 10 characters).
-              </div>
-            </div>
-
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg">
-                Submit
-              </button>
-            </div>
-            <div>
-              <p class="text-muted mt-3">
-                By submitting this form, you consent to sharing your information
-                with me, Hakan Erdogan. I assure you that your data will remain
-                confidential and will not be shared with third parties. It will
-                be securely deleted after processing or within two months.
-                Please note that data transmission occurs via Google services
-                but will (should) not be stored by them.
-                <br />
-                google is google and I am not responsible for their actions,
-                sorry.
-                <br />
-                Contact tool made by me.
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- Contact Form End -->
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <div class="container py-4">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -131,7 +107,7 @@
               I'm always open to new opportunities and connections. Feel free to
               reach out!
             </p>
-            <div class="social-icons d-flex justify-content-center gap-3 my-3">
+            <div class="social-links d-flex justify-content-center gap-3 my-3">
               <a
                 href="https://www.linkedin.com/in/hakan-erdogan-152169349/"
                 target="_blank"
@@ -139,7 +115,7 @@
               >
                 <i class="fab fa-linkedin"></i> LinkedIn
               </a>
-              <a href="#contact" title="Contact Me">
+              <a href="#contact-section" title="Contact Me">
                 <i class="fas fa-envelope"></i> Contact Me
               </a>
               <a
@@ -164,29 +140,30 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Toast container and template for notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+    <template id="toast-template">
+      <div
+        class="toast fade align-items-center border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body">
+            <!-- Message placeholder -->
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </template>
+    <!-- Scripts -->
     <script src="scripts/contact.js"></script>
-    <!-- added to fix form handling using contact.js -->
-    <script>
-      // Validate email format
-      function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      }
-
-      // Get the mailto parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const mailto = urlParams.get("mailto");
-
-      // Redirect if valid
-      if (mailto && isValidEmail(mailto)) {
-        window.location.href = "mailto:" + mailto;
-        window.close(); // Close the page after redirecting
-      } else if (mailto) {
-        console.error(
-          "Invalid email address provided in the mailto parameter."
-        );
-      }
-    </script>
+    <script src="scripts/app.js"></script>
   </body>
 </html>

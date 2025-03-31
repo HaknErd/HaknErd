@@ -1,70 +1,341 @@
-/* Base styles */
-body {
-  background-color: #f0f2f5;
-  font-family: Arial, sans-serif;
+/* ==========================================
+   Global Reset & Base Styles
+========================================== */
+:root {
+  --primary-color: #333;
+  --secondary-color: #fafafa;
+  --accent-color: #007bff;
+  --max-width: 1200px;
+  --background-color: #fff;
+  --hero-background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  --contact-form-bg: #fafafa;
+  --contact-form-border: #ccc;
+  --contact-submit-bg: #333;
+  --contact-submit-hover-bg: #555;
+  --site-footer-bg: #f0f0f0;
+  --site-footer-text: #333;
+}
+
+/* Toast container styling */
+.toast-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1055;
+}
+
+/* Toast base style */
+.toast {
+  min-width: 200px;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Fade out */
+.toast.hide {
+  opacity: 0;
+}
+
+/* Background classes */
+.bg-success {
+  background-color: #28a745;
+}
+.bg-danger {
+  background-color: #dc3545;
+}
+.bg-info {
+  background-color: #17a2b8;
+}
+.bg-secondary {
+  background-color: #6c757d;
+}
+
+:root[data-theme="dark"] {
+  --primary-color: #ddd;
+  --background-color: #121212;
+  --hero-background: linear-gradient(135deg, #2b2b2b, #1f1f1f);
+  --contact-form-bg: #1e1e1e;
+  --contact-form-border: #333;
+  --contact-submit-bg: #ddd;
+  --contact-submit-hover-bg: #bbb;
+  --site-footer-bg: #1f1f1f;
+  --site-footer-text: #bbb;
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  border-radius: 0 !important; /* No rounding */
 }
 
-/* Header */
-header {
-  padding: 1.5rem 0; /* reduced from 2rem */
-  background-color: #ffffff;
-  border-bottom: 1px solid #e9ecef;
-  text-align: center;
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--primary-color);
+  background-color: var(--background-color);
+}
+body[data-theme="dark"] {
+  background-color: #121212;
+  color: #ddd;
 }
 
-/* Hero Section */
-.hero-section {
-  padding: 3rem 0; /* reduced from 4rem */
-  background-color: #e9ecef;
-  text-align: center;
-}
-
-/* Common Section */
-section {
-  padding: 2rem 0; /* reduced from 3rem */
-}
-
-/* Footer */
-footer {
-  padding: 2rem 0;
-  background-color: #343a40;
-  color: #fff;
-  text-align: center;
-}
-footer a {
-  color: #ffc107;
+a {
   text-decoration: none;
-  margin: 0 0.5rem;
+  color: inherit;
 }
-footer a:hover {
+
+/* ==========================================
+     Utility Classes & Container
+  ========================================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+     Navigation & Header
+  ========================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Ensure proper alignment */
+  align-items: center; /* Align items vertically */
+  padding: 1rem;
+  width: 100%;
+}
+
+#theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: inherit;
+  margin-left: auto; /* Push the button to the right */
+  order: 2; /* Ensure button appears on the right */
+}
+
+.navbar-brand a.navbar-brand-name {
+  font-size: 1.5rem; /* decreased size */
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: var(--primary-color);
+  transition: none; /* no transition on hover */
+  pointer-events: none; /* not hoverable */
+}
+
+.navbar-brand a.navbar-brand-name:hover {
+  color: var(--primary-color); /* no hover effect */
+}
+
+/* ==========================================
+     Hero Section
+  ========================================== */
+.site-header {
+  position: relative;
+}
+
+.hero {
+  /* gib mir einfach das hero */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  background: var(--hero-background);
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+}
+
+/* ==========================================
+     Contact Section & Form
+  ========================================== */
+.contact {
+  padding: 3rem 0;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#contact-form label {
+  font-weight: bold;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="subject"],
+#contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--contact-form-border);
+  background-color: var(--contact-form-bg);
+  color: var(--primary-color);
+  font-size: 1rem;
+  &:focus {
+    outline: bottom 2px solid var(--accent-color);
+    border-color: var(--accent-color);
+  }
+}
+
+#contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+#contact-form input[type="submit"] {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: var(--contact-submit-bg);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#contact-form input[type="submit"]:hover {
+  background-color: var(--contact-submit-hover-bg);
+}
+
+/* Custom checkbox styling */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  position: relative; /* enable positioning for check pseudo-element */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.custom-checkbox input[type="checkbox"]:checked::after {
+  content: "\2713"; /* Unicode checkmark */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
   color: #fff;
 }
 
-/* Contact Form / Container */
-.form-container {
-  max-width: 600px;
-  margin: 1rem auto; /* reduced whitespace */
-  padding: 1rem; /* reduced padding */
-  border-radius: 10px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-}
-.form-label {
-  font-weight: 500;
+.custom-checkbox input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-/* Utility Classes */
-.header-section {
-  margin-bottom: 2rem;
-  text-align: center;
+.custom-checkbox i {
+  font-size: 1rem;
+  color: var(--accent-color);
 }
 
-/* Back button style */
-.back-button {
-  display: block;
-  margin: 1rem auto;
-  margin-top: 0;
+.custom-checkbox label {
+  cursor: pointer;
+}
+
+.custom-checkbox label a {
+  text-decoration: underline;
+}
+
+/* ==========================================
+     Footer & Social Links
+  ========================================== */
+.site-footer {
+  background-color: var(--site-footer-bg);
+  padding: 2rem 0;
   text-align: center;
+  color: var(--site-footer-text);
+}
+
+.site-footer h4 {
+  margin-bottom: 1rem;
+}
+
+.site-footer p {
+  margin: 0.5rem 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+social-links a:hover {
+  color: #007bff;
+}
+
+/* ==========================================
+     Dark Theme Overrides
+  ========================================== */
+[data-theme="dark"] {
+  background-color: #121212;
+  color: #ddd;
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #2b2b2b, #1f1f1f);
+}
+
+[data-theme="dark"] #contact-form input[type="text"],
+[data-theme="dark"] #contact-form input[type="email"],
+[data-theme="dark"] #contact-form input[type="subject"],
+[data-theme="dark"] #contact-form textarea {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  color: #ddd;
+}
+
+[data-theme="dark"] #contact-form input[type="submit"] {
+  background-color: #ddd;
+  color: #121212;
+}
+
+[data-theme="dark"] #contact-form input[type="submit"]:hover {
+  background-color: #bbb;
+}
+
+[data-theme="dark"] .site-footer {
+  background-color: #1f1f1f;
+  color: #bbb;
 }
