@@ -341,3 +341,7 @@ social-links a:hover {
   background-color: #1f1f1f;
   color: #bbb;
 }
+
+.underline {
+  text-decoration: underline 2px solid var(--accent-color);
+}

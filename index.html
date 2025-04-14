@@ -187,5 +187,32 @@
     <!-- everything else for the non donating -->
     <script src="scripts/contact.js"></script>
     <script src="scripts/app.js"></script>
+    <script>
+      // When user goes afk for more than 2 minutes, go to /support.html
+      let timeout;
+      function resetTimeout() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          window.location.href = "/support.html";
+        }, 120000); // 2 minutes
+      }
+      document.addEventListener("mousemove", resetTimeout);
+      document.addEventListener("keydown", resetTimeout);
+      document.addEventListener("scroll", resetTimeout);
+      document.addEventListener("click", resetTimeout);
+      document.addEventListener("touchstart", resetTimeout);
+      document.addEventListener("touchmove", resetTimeout);
+      document.addEventListener("touchend", resetTimeout);
+      document.addEventListener("wheel", resetTimeout);
+      document.addEventListener("scroll", resetTimeout);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+          resetTimeout();
+        } else {
+          clearTimeout(timeout);
+        }
+      });
+      resetTimeout();
+    </script>
   </body>
 </html>
