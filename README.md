@@ -2,11 +2,12 @@
 
 Humble hobby developer.
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F41CS1CN)
+## 🌐 Website
+
+### [hknx.de](https://hknx.de/)
 
 ## Socials
 
-- <a href="https://www.linkedin.com/in/hakan-erdogan-152169349/" style="display: inline-flex; align-items: center; text-decoration: none;">
+- <a href="https://www.linkedin.com/in/hknerd/" style="display: inline-flex; align-items: center; text-decoration: none;">
     <img src="https://raw.githubusercontent.com/CLorant/readme-social-icons/refs/heads/main/small/light/linkedin.svg" alt="LinkedIn" style="vertical-align: middle; margin-right: 8px;"/> Hakan Erdogan
     </a>
-
